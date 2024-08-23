@@ -1,12 +1,12 @@
-t = input('Enter talents:\n')
-p = input('\nEnter pounds:\n')
-l = input('\nEnter lots:\n')
+t = float(input('Enter talents:\n'))
+p = float(input('\nEnter pounds:\n'))
+l = float(input('\nEnter lots:\n'))
 
-grams = float(l) * 13.3
-grams += float(p) * 32 * 13.3
-grams += float(t) * 20 * 32 * 13.3
-kilograms = int(grams / 1000)
-grams -= kilograms * 1000
+grams = l * 13.3
+grams += p * 32 * 13.3
+grams += t * 20 * 32 * 13.3
+kilograms = int(grams // 1000)
+grams %= 1000
 
 print(f"\nThe weight in modern units:\n{kilograms} kilograms and {grams:<.2f} grams.")
 
