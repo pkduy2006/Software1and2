@@ -1,4 +1,4 @@
-num = 3;
+num = 3
 
 while num <= 1000:
     print(num)
