@@ -3,7 +3,7 @@
 ## Exercises 2: Single Table Queries
 
 ### Question 1:
-select * from goal;
+select *  from goal;
 
 ![Screenshot 2024-09-12 151240.png](Screenshot%202024-09-12%20151240.png)
 
@@ -104,3 +104,110 @@ select country.name from country, airport, game, goal, goal_reached where airpor
 
 ![Screenshot 2024-09-12 214023.png](Screenshot%202024-09-12%20214023.png)
 
+# Week 4:
+
+## Exercises 4: Join
+
+### Question 1:
+select country.name as "country name", airport.name as "airport name" from country inner join airport on airport.iso_country = country.iso_country where country.name = "Finland" and scheduled_service = "yes";
+
+![Screenshot 2024-09-13 084256.png](Screenshot%202024-09-13%20084256.png)
+
+### Question 2:
+select screen_name, airport.name from game inner join airport on location = ident;
+
+![Screenshot 2024-09-13 085546.png](Screenshot%202024-09-13%20085546.png)
+
+### Question 3:
+select screen_name, country.name from game inner join airport on location = ident inner join country on airport.iso_country = country.iso_country;
+
+![Screenshot 2024-09-13 090137.png](Screenshot%202024-09-13%20090137.png)
+
+### Question 4:
+select airport.name, screen_name from airport left join game on ident = location where name like "%Hels%";
+
+![Screenshot 2024-09-13 091034.png](Screenshot%202024-09-13%20091034.png)
+
+### Question 5:
+select name, screen_name from goal left join goal_reached on goal.id = goal_id left join game on game.id = game_id;
+
+![Screenshot 2024-09-13 091314.png](Screenshot%202024-09-13%20091314.png)
+
+## Exercises 5: Subqueries
+
+### Question 1:
+select name from country where iso_country in (select iso_country from airport where name like "Satsuma%");
+
+![Screenshot 2024-09-13 092935.png](Screenshot%202024-09-13%20092935.png)
+
+### Question 2:
+select name from airport where iso_country in (select iso_country from country where name = "Monaco");
+
+![Screenshot 2024-09-13 093604.png](Screenshot%202024-09-13%20093604.png)
+
+### Question 3:
+select screen_name from game where id in (select game_id from goal_reached where goal_id in (select id from goal where name = "CLOUDS"));
+
+![Screenshot 2024-09-13 095645.png](Screenshot%202024-09-13%20095645.png)
+
+### Question 4:
+select name from country where iso_country not in (select iso_country from airport);
+
+![Screenshot 2024-09-13 100124.png](Screenshot%202024-09-13%20100124.png)
+
+### Question 5:
+select name from goal where id not in (select goal.id from goal, goal_reached, game where game.id = game_id and goal.id = goal_id and screen_name = "Heini);
+
+![Screenshot 2024-09-13 100512.png](Screenshot%202024-09-13%20100512.png)
+
+## Exercises 6: Aggregate Queries
+
+### Question 1:
+select max(elevation_ft) from airport;
+
+![Screenshot 2024-09-13 103243.png](Screenshot%202024-09-13%20103243.png)
+
+### Question 2:
+select continent, count (*) from country group by continent;
+
+![Screenshot 2024-09-13 103905.png](Screenshot%202024-09-13%20103905.png)
+
+### Question 3:
+select screen_name, count(*) from game, goal_reached where id = game_id group by screen_name;
+
+![Screenshot 2024-09-13 104135.png](Screenshot%202024-09-13%20104135.png)
+
+### Question 4:
+select screen_name from game where co2_consumed in (select min(co2_consumed) from game);
+
+![Screenshot 2024-09-13 104605.png](Screenshot%202024-09-13%20104605.png)
+
+### Question 5:
+select country.name, count(*) from airport, country where airport.iso_country = country.iso_country group by country.iso_country order by count(*) desc limit 50;
+
+![Screenshot 2024-09-13 105237.png](Screenshot%202024-09-13%20105237.png)
+
+### Question 6:
+select country.name from airport, country where airport, country where airport.iso_country = country.iso_country group by country.iso_country having count(*) > 1000;
+
+![Screenshot 2024-09-13 110023.png](Screenshot%202024-09-13%20110023.png)
+
+### Question 7:
+select name from airport where elevation_ft in (select max(elevation_ft) from airport);
+
+![Screenshot 2024-09-13 110450.png](Screenshot%202024-09-13%20110450.png)
+
+### Question 8:
+select country.name from airport, country where airport.iso_country = country.iso_country and elevation_ft in (select max(elevation_ft) from airport);
+
+![Screenshot 2024-09-13 110828.png](Screenshot%202024-09-13%20110828.png)
+
+### Question 9:
+select count(*) from game, goal_reached where id = game_id and screen_name = "Vesa";
+
+![Screenshot 2024-09-13 111240.png](Screenshot%202024-09-13%20111240.png)
+
+### Question 10:
+select name from airport where latitude_deg in (select min(latitude_deg) from airport);
+
+![Screenshot 2024-09-13 111755.png](Screenshot%202024-09-13%20111755.png)
