@@ -230,8 +230,10 @@ SELECT * FROM goal_reached;
 
 ![Screenshot 2024-09-15 104458.png](Screenshot%202024-09-15%20104458.png)
 
-### Question 3:
+### Question 4:
 DELETE FROM game;
 SELECT * FROM game;
 
 ![Screenshot 2024-09-15 104735.png](Screenshot%202024-09-15%20104735.png)
+
+
