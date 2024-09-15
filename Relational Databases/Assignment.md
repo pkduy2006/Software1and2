@@ -211,3 +211,27 @@ select count(*) from game, goal_reached where id = game_id and screen_name = "Ve
 select name from airport where latitude_deg in (select min(latitude_deg) from airport);
 
 ![Screenshot 2024-09-13 111755.png](Screenshot%202024-09-13%20111755.png)
+
+## Exercise 7: Update Queries
+
+### Question 1: 
+update game 
+set location = (select ident from airport where name = "Nottingham Airport"),
+co2_consumed = co2_consumed + 500 where screen_name = "Vesa"
+;
+
+select * from game;
+
+![Screenshot 2024-09-15 103725.png](Screenshot%202024-09-15%20103725.png)
+
+### Question 3:
+DELETE FROM goal_reached;
+SELECT * FROM goal_reached;
+
+![Screenshot 2024-09-15 104458.png](Screenshot%202024-09-15%20104458.png)
+
+### Question 3:
+DELETE FROM game;
+SELECT * FROM game;
+
+![Screenshot 2024-09-15 104735.png](Screenshot%202024-09-15%20104735.png)
