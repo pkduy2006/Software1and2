@@ -22,9 +22,12 @@ print(f"- Maximum speed: {new_car.maximum_speed} km/h.")
 print(f"- Current speed: {new_car.current_speed} km/h.")
 print(f"- Travelled distance: {new_car.travelled_distance} km.")
 
-change = input("Enter the change of speed in kilometers per hour or press 'Enter' to stop: ")
-while change != '':
+change = input("Enter the change of speed in kilometers per hour: ")
+while change != 0:
     new_car.accelerate(change)
+    if new_car.current_speed == 0:
+        print("The car is stopped.")
+        break
     print(f"The current speed of the car is {new_car.current_speed} km/h.")
-    change = input("Enter the change of speed or press 'Enter' to stop: ")
+    change = input("Enter the change of speed: ")
 print(f"The final speed of the car is {new_car.current_speed} km/h.")
