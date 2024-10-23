@@ -1,9 +1,9 @@
 class Car:
-    def __init__(self, registration_number, maximum_speed, current_speed = 0, travelled_distance = 0):
+    def __init__(self, registration_number, maximum_speed):
         self.registration_number = registration_number
         self.maximum_speed = maximum_speed
-        self.current_speed = current_speed
-        self.travelled_distance = travelled_distance
+        self.current_speed = 0
+        self.travelled_distance = 0
 
 print("Please fill in the details of the new car.")
 regis_num = input("First, enter the registration number of the new car: ")
