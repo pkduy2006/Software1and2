@@ -7,8 +7,17 @@ city_name = input("Enter the city name: ")
 #latitude_deg = response1[0]["lat"]
 #longitude_deg = response1[0]["lon"]
 request = "https://api.openweathermap.org/data/2.5/weather?q=" + city_name + "&appid=33dd23764fa14c0bd3a056f84cae3ea0&units=metric"
-response = requests.get(request).json()
+try:
+    response = requests.get(request)
+    if response.status_code == 200:
+        json_response = response.json()
+        print(f"Temperature in Celsius degree: {json_response['main']['temp']:.1f}")
+        print(f"Weather description: {json_response['weather'][0]['description']}")
+except requests.exceptions.RequestException as e:
+    print("Your request could not be completed.")
+
+#response = requests.get(request).json()
 #print(json.dumps(response, indent = 2))
 #print(response)
-print(f"Temperature in Celsius degree: {response['main']['temp']:.1f}")
-print(f"Weather description: {response['weather'][0]['description']}")
+#print(f"Temperature in Celsius degree: {response['main']['temp']:.1f}")
+#print(f"Weather description: {response['weather'][0]['description']}")

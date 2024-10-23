@@ -1,7 +1,13 @@
 import requests
-#import json
 
 request = "https://api.chucknorris.io/jokes/random"
-response = requests.get(request).json()
+
+try:
+    response = requests.get(request)
+    if response.status_code == 200:
+        json_response = response.json()
+        print(json_response['value'])
+except requests.exceptions.RequestException as e:
+    print("Your request could not be completed.")
+
 #print(json.dumps(response, indent = 4))
-print(response['value'])
