@@ -16,14 +16,12 @@ for i in range(10):
     cnt += 1
     car_registration_number = "ABC-" + str(cnt)
     cars.append(Car(car_registration_number, car_maximum_speed))
-    #print(f"The current car has the registration number: {cars[i - 1].registration_number} and maximum speed: {cars[i - 1].maximum_speed} km/h.")
 
 while True:
     for i in range(10):
         random_change_speed = random.randrange(-10, 15)
         cars[i].accelerate(random_change_speed)
         cars[i].drive(1)
-        #print(f"{i}: {cars[i].current_speed}, {cars[i].travelled_distance}")
     if not check():
         break
 
