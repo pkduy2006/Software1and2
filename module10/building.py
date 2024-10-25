@@ -13,9 +13,11 @@ class Building:
         if num < 0 or num > self.number_of_elevators:
             print("Invalid elevator number")
             return
-        print(f"The elevator no{num} will run.")
+        print(f"The elevator {num} will run.")
         self.elevators[num - 1].go_to_floor(destination_floor)
 
     def fire_alarm(self):
         print("Fire alarm is on. All elevators will move to the bottom floor.")
-        for i, elevator in en
+        for i, elevator in enumerate(self.elevators):
+            print(f"The elevator {i + 1} will move from floor {elevator.current_floor}.")
+            elevator.go_to_floor(self.bottom_floor)
