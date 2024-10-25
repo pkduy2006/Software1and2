@@ -1,21 +1,6 @@
 import random
 from prettytable import PrettyTable
-
-class Car:
-    def __init__(self, registration_number, maximum_speed):
-        self.registration_number = registration_number
-        self.maximum_speed = maximum_speed
-        self.current_speed = 0
-        self.travelled_distance = 0
-
-    def accelerate(self, change_of_speed):
-        if int(change_of_speed) >= 0:
-            self.current_speed = min(self.current_speed + int(change_of_speed), self.maximum_speed)
-        else:
-            self.current_speed = max(self.current_speed + int(change_of_speed), 0)
-
-    def drive(self, hours):
-        self.travelled_distance += self.current_speed * hours
+from car import Car
 
 def check():
     for car in cars:
@@ -39,7 +24,7 @@ while True:
         cars[i].accelerate(random_change_speed)
         cars[i].drive(1)
         #print(f"{i}: {cars[i].current_speed}, {cars[i].travelled_distance}")
-    if check() == False:
+    if not check():
         break
 
 car_table = PrettyTable(["Registration Number", "Maximum Speed", "Current Speed", "Travelled Distance"])
