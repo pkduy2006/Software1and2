@@ -11,7 +11,6 @@ class Car:
             self.current_speed = self.maximum_speed
         elif self.current_speed < 0:
             self.current_speed = 0
-        print(f"Current speed: {self.current_speed} km/h.")
 
     def drive(self, hours):
         self.travelled_distance += hours * self.current_speed
