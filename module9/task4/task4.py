@@ -11,13 +11,13 @@ def check():
 cars = []
 
 for i in range(10):
-    car_maximum_speed = random.randrange(100, 200)
+    car_maximum_speed = random.randint(100, 200)
     car_registration_number = "ABC-" + str(i + 1)
     cars.append(Car(car_registration_number, car_maximum_speed))
 
 while True:
     for i in range(10):
-        random_change_speed = random.randrange(-10, 15)
+        random_change_speed = random.randint(-10, 15)
         cars[i].accelerate(random_change_speed)
         cars[i].drive(1)
     if not check():
