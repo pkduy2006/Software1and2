@@ -9,12 +9,10 @@ def check():
     return True
 
 cars = []
-cnt = 0
 
 for i in range(10):
     car_maximum_speed = random.randrange(100, 200)
-    cnt += 1
-    car_registration_number = "ABC-" + str(cnt)
+    car_registration_number = "ABC-" + str(i + 1)
     cars.append(Car(car_registration_number, car_maximum_speed))
 
 while True:
