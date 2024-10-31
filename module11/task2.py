@@ -13,10 +13,10 @@ class Car:
         self.travelled_distance += self.current_speed * hours
 
     def print_information(self):
-        print(f"{self.car_number}. Registration number: {self.registration_number}")
-        print(f"Maximum speed: {self.maximum_speed}km/h")
-        print(f"Current speed: {self.current_speed}km/h")
-        print(f"Travelled distance: {self.travelled_distance}km")
+        print(f"""{self.car_number}. Registration number: {self.registration_number}
+Maximum speed: {self.maximum_speed} km/h
+Current speed: {self.current_speed} km/h
+Travelled distance: {self.travelled_distance} km""")
 
 class ElectricCar(Car):
 
@@ -26,7 +26,7 @@ class ElectricCar(Car):
 
     def print_information(self):
         super().print_information()
-        print(f"Battery capacity: {self.battery_capacity} kWh.")
+        print(f"Battery capacity: {self.battery_capacity} kWh")
 
 class GasolineCar(Car):
     def __init__(self, registration_number, maximum_speed, current_speed, tank_volume):
@@ -35,7 +35,7 @@ class GasolineCar(Car):
 
     def print_information(self):
         super().print_information()
-        print(f"Tank volume: {self.tank_volume} l.")
+        print(f"Tank volume: {self.tank_volume} l")
 
 cars = []
 cars.append(ElectricCar('ABC-15', 180, 80, 52.5))

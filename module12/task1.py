@@ -9,5 +9,3 @@ try:
         print(json_response['value'])
 except requests.exceptions.RequestException as e:
     print("Your request could not be completed.")
-
-#print(json.dumps(response, indent = 4))

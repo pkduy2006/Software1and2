@@ -17,8 +17,9 @@ class Book(Publication):
 
     def print_information(self):
         super().print_information()
-        print(f"Author: {self.author_name}")
-        print(f"Page Count: {self.page_count} pages")
+        print(f"""Type: Book
+Author: {self.author_name}
+Page Count: {self.page_count} pages""")
 
 class Magazine(Publication):
     def __init__(self, name, chief_editor):
@@ -27,7 +28,8 @@ class Magazine(Publication):
 
     def print_information(self):
         super().print_information()
-        print(f"Chief Editor: {self.chief_editor}")
+        print(f"""Type: Magazine
+Chief Editor: {self.chief_editor}""")
 
 publications = []
 publications.append(Book("Compartment No. 6", "Rosa Liksom", 192))

@@ -1,23 +1,16 @@
 import requests
 
 city_name = input("Enter the city name: ")
-#country_code = input("Enter the country code: ")
-#request1 = "http://api.openweathermap.org/geo/1.0/direct?q=" + city_name + "," + country_code + "&appid=33dd23764fa14c0bd3a056f84cae3ea0"
-#response1 = requests.get(request1).json()
-#latitude_deg = response1[0]["lat"]
-#longitude_deg = response1[0]["lon"]
 request = "https://api.openweathermap.org/data/2.5/weather?q=" + city_name + "&appid=33dd23764fa14c0bd3a056f84cae3ea0&units=metric"
 try:
     response = requests.get(request)
-    if response.status_code == 200:
-        json_response = response.json()
-        print(f"Temperature in Celsius degree: {json_response['main']['temp']:.1f}")
-        print(f"Weather description: {json_response['weather'][0]['description']}")
-except requests.exceptions.RequestException as e:
-    print("Your request could not be completed.")
+    if not response.ok:
+        raise requests.exceptions.RequestsWarning()
 
-#response = requests.get(request).json()
-#print(json.dumps(response, indent = 2))
-#print(response)
-#print(f"Temperature in Celsius degree: {response['main']['temp']:.1f}")
-#print(f"Weather description: {response['weather'][0]['description']}")
+    json_response = response.json()
+    print(f"""Temperature in Celsius degree: {json_response['main']['temp']:.1f}
+Weather description: {json_response['weather'][0]['description']}""")
+except requests.exceptions.RequestException as error:
+    print("Your request could not be completed.")
+except requests.exceptions.RequestsWarning as error:
+    print("Invalid request.")
