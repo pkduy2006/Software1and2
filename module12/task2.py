@@ -1,8 +1,7 @@
 import requests
 
-api_key = "?"
 city_name = input("Enter the city name: ")
-request = "https://api.openweathermap.org/data/2.5/weather?q=" + city_name + "&appid=" + api_key + "&units=metric"
+request = "https://api.openweathermap.org/data/2.5/weather?q=" + city_name + "&appid=33dd23764fa14c0bd3a056f84cae3ea0&units=metric"
 try:
     response = requests.get(request)
     if not response.ok:
